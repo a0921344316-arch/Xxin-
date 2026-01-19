@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>釜山行 - 文青風行程表</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocean-blue: #a2d2ff;
+            --deep-blue: #0077b6;
+            --sand-beige: #fefae0;
+            --text-gray: #495057;
+            --transport-red: #e63946;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #d0f4ff 0%, #e8f9ff 50%, #ffffff 100%);
+            background-attachment: fixed;
+            color: var(--text-gray);
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(162, 210, 255, 0.3);
+        }
+
+        .tab-btn {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--deep-blue);
+            cursor: pointer;
+            border-radius: 20px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--ocean-blue);
+            color: white;
+            box-shadow: 0 4px 10px rgba(162, 210, 255, 0.4);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px 100px 20px;
+            display: none;
+        }
+
+        .container.active { display: block; animation: slideUp 0.6s ease-out; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2.day-title { text-align: center; color: var(--deep-blue); margin-bottom: 25px; font-weight: 700; }
+
+        .card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .icon-box {
+            font-size: 1.4rem;
+            color: var(--ocean-blue);
+            margin-right: 18px;
+            width: 45px;
+            text-align: center;
+        }
+
+        .info-box { flex: 1; }
+
+        .time { font-size: 0.85rem; color: #999; font-weight: 700; }
+        .spot-name { font-size: 1.1rem; font-weight: 700; margin: 4px 0; color: #2b2d42; }
+
+        .transport-link {
+            padding: 10px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--transport-red);
+            font-weight: 500;
+        }
+
+        .transport-link i { margin-right: 6px; }
+
+        .note { font-size: 0.85rem; color: #777; border-top: 1px solid #eee; margin-top: 8px; padding-top: 8px; }
+
+        .meal-icon { color: #e67e22; } 
+        .shopping-icon { color: #9b59b6; }
+    </style>
+</head>
+<body>
+
+<nav class="nav-tabs">
+    <button class="tab-btn active" onclick="showDay(1)">D1</button>
+    <button class="tab-btn" onclick="showDay(2)">D2</button>
+    <button class="tab-btn" onclick="showDay(3)">D3</button>
+    <button class="tab-btn" onclick="showDay(4)">D4</button>
+    <button class="tab-btn" onclick="showDay(5)">D5</button>
+</nav>
+
+<div id="day1" class="container active">
+    <h2 class="day-title">01/23 FRI 抵達釜山</h2>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-plane-arrival"></i></div>
+        <div class="info-box">
+            <span class="time">18:50</span>
+            <div class="spot-name">釜山金海機場 (CI186)</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-train-subway"></i> 輕軌至沙上 ➡️ 綠線地鐵至海雲台</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-fire-burner"></i></div>
+        <div class="info-box">
+            <span class="time">21:23</span>
+            <div class="spot-name">味贊王鹽烤肉 (海雲台店)</div>
+            <div class="note">飯店放行李後步行前往</div>
+        </div>
+    </div>
+</div>
+
+<div id="day2" class="container">
+    <h2 class="day-title">01/24 SAT 海濱探索</h2>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-train-tram"></i></div>
+        <div class="info-box">
+            <span class="time">10:00</span>
+            <div class="spot-name">尾浦站 (天空膠囊)</div>
+            <div class="note">交通：搭計程車 或 走路25分鐘</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-camera"></i> 膠囊列車移動中</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="info-box">
+            <span class="time">10:40</span>
+            <div class="spot-name">青沙浦站 (拍照點)</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-train"></i> 搭海岸列車</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-anchor"></i></div>
+        <div class="info-box">
+            <span class="time">11:30</span>
+            <div class="spot-name">松亭站</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-person-walking"></i> 步行 15 分鐘</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+        <div class="info-box">
+            <span class="time">12:10</span>
+            <div class="spot-name">31公分海鮮刀削麵</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bag-shopping"></i> 海岸列車回尾浦</div>
+    <div class="card">
+        <div class="icon-box shopping-icon"><i class="fa-solid fa-store"></i></div>
+        <div class="info-box">
+            <span class="time">15:00</span>
+            <div class="spot-name">尾浦逛街 (大創/小吃)</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus"></i> 3003公車 ➡️ 快艇賽場</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-ship"></i></div>
+        <div class="info-box">
+            <span class="time">18:30</span>
+            <div class="spot-name">Yacht Holic 遊艇體驗</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus"></i> 綠線公車轉乘</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-bowl-food"></i></div>
+        <div class="info-box">
+            <span class="time">20:47</span>
+            <div class="spot-name">密陽豬肉湯飯</div>
+            <div class="note">飯後走路 3 分鐘回飯店</div>
+        </div>
+    </div>
+</div>
+
+<div id="day3" class="container">
+    <h2 class="day-title">01/25 SUN 文化與購物</h2>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-hotel"></i></div>
+        <div class="info-box">
+            <span class="time">10:00</span>
+            <div class="spot-name">西面飯店 (寄行李)</div>
+            <div class="note">地鐵到西面站 ➡️ 走路 7 分</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-subway"></i> 札嘎其站 ➡️ 走路 6 分</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-fish-fins"></i></div>
+        <div class="info-box">
+            <span class="time">11:00</span>
+            <div class="spot-name">札嘎其市場</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus-simple"></i> 公車 (西區 2-2)</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-palette"></i></div>
+        <div class="info-box">
+            <span class="time">11:30</span>
+            <div class="spot-name">甘川洞文化村</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-person-walking"></i> 步行 9 分鐘</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+        <div class="info-box">
+            <span class="time">14:07</span>
+            <div class="spot-name">BIFF 廣場 (糖餅)</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-cart-shopping"></i> 步行或地鐵一站</div>
+    <div class="card">
+        <div class="icon-box shopping-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div class="info-box">
+            <span class="time">16:23</span>
+            <div class="spot-name">樂天百貨/超市</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-utensils"></i> 地鐵回西面站</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="info-box">
+            <span class="time">17:53</span>
+            <div class="spot-name">匠人鐵板雞 (西面)</div>
+        </div>
+    </div>
+</div>
+
+<div id="day4" class="container">
+    <h2 class="day-title">01/26 MON 松島絕景</h2>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-suitcase"></i></div>
+        <div class="info-box">
+            <span class="time">11:00</span>
+            <div class="spot-name">西釜山飯店 (寄行李)</div>
+            <div class="note">輕軌西釜山流通地區 (1號出口)</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus"></i> 161 ➡️ 96公車 ➡️ 走路 9 分</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-mountain-sun"></i></div>
+        <div class="info-box">
+            <span class="time">12:30</span>
+            <div class="spot-name">松島纜車站</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-cable-car"></i> 纜車跨海中</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-cloud-sun"></i></div>
+        <div class="info-box">
+            <span class="time">13:10</span>
+            <div class="spot-name">松島 Sky Park</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-person-walking"></i> 步行前往</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <div class="info-box">
+            <span class="time">13:42</span>
+            <div class="spot-name">EL 16.52 咖啡廳</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus"></i> 71 公車</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-house-chimney-window"></i></div>
+        <div class="info-box">
+            <span class="time">16:02</span>
+            <div class="spot-name">白淺灘文化村</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-bus"></i> 3003 ➡️ 輕軌回飯店</div>
+    <div class="card">
+        <div class="icon-box meal-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+        <div class="info-box">
+            <span class="time">18:04</span>
+            <div class="spot-name">巨人王豬排店</div>
+        </div>
+    </div>
+</div>
+
+<div id="day5" class="container">
+    <h2 class="day-title">01/27 TUE 返程</h2>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-car-side"></i></div>
+        <div class="info-box">
+            <span class="time">08:50</span>
+            <div class="spot-name">機場接送 ➡️ 金海機場</div>
+            <div class="note">飯店出發，直達機場辦理報到</div>
+        </div>
+    </div>
+    <div class="transport-link"><i class="fa-solid fa-passport"></i> 辦理退稅與登機</div>
+    <div class="card">
+        <div class="icon-box"><i class="fa-solid fa-plane-departure"></i></div>
+        <div class="info-box">
+            <span class="time">11:50</span>
+            <div class="spot-name">起飛 (CI189)</div>
+            <div class="note">預計 13:30 抵達桃園國際機場</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showDay(dayNum) {
+        document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('day' + dayNum).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+</script>
+
+</body>
+</html>
